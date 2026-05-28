@@ -3,12 +3,13 @@ steps:
     commands:
       - pwd
       - ls -la
-      - docker build -t pytest-bdd:latest .
+      - docker build -t vaishali0207/pytest-bdd:latest .
+      - docker push vaishali0207/pytest-bdd:latest
       - docker images
   - wait
 
   - label: "run image"
     commands:
-      - docker run pytest-bdd:latest
+      - docker run vaishali0207/pytest-bdd:latest
     agents:
       queue: "linux-small"
