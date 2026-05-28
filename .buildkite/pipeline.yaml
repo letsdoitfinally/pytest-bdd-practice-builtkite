@@ -2,7 +2,7 @@ steps:
   - label: "Run BDD tests"
     command: |
       docker build -t pytest-bdd .
-      docker run --rm pytest-bdd
+      docker run pytest-bdd
 
     agents:
       queue: "linux-small"
