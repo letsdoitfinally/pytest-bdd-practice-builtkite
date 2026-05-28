@@ -1,15 +1,15 @@
 steps:
   - label: ":docker: Build and Run Tests"
     commands:
-      - pwd
-      - ls -la
-      - docker build -t vaishali0207/pytest-bdd:latest .
-      - docker push vaishali0207/pytest-bdd:latest
-      - docker images
-  - wait
+      - docker build -t pytest-bdd:latest .
+      - docker run --rm pytest-bdd:latest
 
-  - label: "run image"
-    commands:
-      - docker run vaishali0207/pytest-bdd:latest
     agents:
       queue: "linux-small"
+
+    plugins:
+      - docker#v5.13.0:
+          image: "docker:latest"
+          always-pull: true
+          volumes:
+            - "/var/run/docker.sock:/var/run/docker.sock"
