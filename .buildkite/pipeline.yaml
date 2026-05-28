@@ -5,7 +5,8 @@ steps:
       - ls -la
       - docker build -t pytest-bdd:latest .
       - docker images
-      - docker run --rm pytest-bdd:latest
-
+  - label: "run image"
+    commands:
+      - docker run pytest-bdd:latest
     agents:
       queue: "linux-small"
