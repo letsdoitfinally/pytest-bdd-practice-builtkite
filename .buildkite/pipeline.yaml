@@ -1,8 +1,11 @@
 steps:
-  - label: "Run BDD tests"
-    command: |
-      docker build -t pytest-bdd:latest .
-      docker run pytest-bdd:latest
+  - label: ":docker: Build and Run Tests"
+    commands:
+      - pwd
+      - ls -la
+      - docker build -t pytest-bdd:latest .
+      - docker images
+      - docker run --rm pytest-bdd:latest
 
     agents:
       queue: "linux-small"
