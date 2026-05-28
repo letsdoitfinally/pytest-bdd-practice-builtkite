@@ -5,6 +5,8 @@ steps:
       - ls -la
       - docker build -t pytest-bdd:latest .
       - docker images
+  - wait
+
   - label: "run image"
     commands:
       - docker run pytest-bdd:latest
