@@ -1,14 +1,8 @@
 steps:
-  - label: "Run BDD test"
+  - label: "Run BDD tests"
     command: |
-      echo "Setting up environment"
-      python -m venv venv
-      source venv/bin/activate
-      pip install -r requirements.txt
-      
-      pytest tests/ \
-        --gherkin-terminal-reporter -v
+      docker build -t pytest-bdd .
+      docker run --rm pytest-bdd
 
     agents:
-      queue: "default"
-      
+      queue: "linux-small"
