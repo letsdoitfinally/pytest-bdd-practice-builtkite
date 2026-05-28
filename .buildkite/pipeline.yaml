@@ -1,0 +1,14 @@
+steps:
+  - label: "Run BDD test"
+    command: |
+      echo "Setting up environment"
+      python -m venv venv
+      source venv/bin/activate
+      pip install -r requirements.txt
+      
+      pytest tests/ \
+        --gherkin-terminal-reporter -v
+
+    agents:
+      queue: "default"
+      
